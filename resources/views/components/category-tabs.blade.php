@@ -8,7 +8,7 @@
         </a>
     </li>
     @forelse ($categories as $category)
-        <li class="me-2">
+        <li class="me-2 border border-gray-200 rounded-lg">
             <a href="" class="{{
             Route::currentRouteNamed('post.byCategory') && request('category')->id == $category->id
             ? 'inline-block px-4 py-2 text-white bg-gray-600 rounded-lg active'

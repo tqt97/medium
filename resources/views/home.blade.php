@@ -8,9 +8,16 @@
                     </x-category-tabs>
                 </div>
             </div>
-            <div class="bg-white mt-2 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white mt-8 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Home") }}
+                    @forelse ($posts as $post)
+                        <x-posts.item :post="$post"></x-posts.item>
+                    @empty
+                        <div class="text-center text-gray-400 py-16">No Posts Found</div>
+                    @endforelse
+                </div>
+                <div class="p-6">
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>

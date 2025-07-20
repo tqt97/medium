@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class HomeController extends Controller
 {
     public function __invoke()
     {
-        return view('home');
+        $posts = Post::with('user')
+            ->latest()
+            ->paginate(3);
+
+        return view('home', [
+            'posts' => $posts,
+        ]);
     }
 }

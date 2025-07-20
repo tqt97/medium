@@ -4,31 +4,32 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                <div class="shrink-0 flex items-center group">
+                    <a href="{{ route('home') }}"
+                        class="border border-gray-900 bg-gray-900 rounded-md group-hover:shadow-md">
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                        <span class="h-9 w-auto font-mono font-extrabold text-3xl px-2 py-1 text-white">T</span>
                     </a>
                 </div>
-
             </div>
 
             <div class="flex">
                 @if (Route::has('login'))
                     <nav class="flex items-center justify-end gap-4">
                         @auth
-                            <a href="{{ url('/dashboard') }}"
+                            <a href="{{ route('admin.posts.create') }}"
                                 class="inline-block px-5 py-1.5 bg-gray-800 border hover:shadow-md hover:bg-gray-900 rounded-lg text-sm leading-normal text-white">
                                 Create new post
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="inline-block px-5 py-1.5 border border-gray-50 hover:border-gray-800 rounded-lg text-sm leading-normal">
+                                class="inline-block px-5 py-1.5 border hover:border-gray-200 hover:bg-gray-50 hover:shadow-sm rounded-lg text-sm leading-normal">
                                 Log in
                             </a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="inline-block px-5 py-1.5 border bg-gray-800 hover:shadow-md hover:bg-gray-900 rounded-lg text-sm leading-normal text-white transition-colors duration-150">
+                                    class="inline-block px-5 py-1.5 border bg-gray-900 hover:shadow-md hover:bg-gray-800 rounded-lg text-sm leading-normal text-white transition-colors duration-150">
                                     Register
                                 </a>
                             @endif
@@ -64,7 +65,7 @@
                                     @csrf
 
                                     <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
+                                                        this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
@@ -115,7 +116,7 @@
                         @csrf
 
                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
+                                                                    this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
